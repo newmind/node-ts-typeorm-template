@@ -2,6 +2,7 @@
     "env": "development",
     "dbConfig": {
         "host": "localhost",
+        // "host": "pg",
         "user": "root",
         "password": "password",
         "database": "typeorm"

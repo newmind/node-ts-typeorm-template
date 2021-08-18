@@ -5,7 +5,12 @@
             "type": "node-terminal",
             "request": "launch",
             "name": "Dev typescript-express-starter",
-            "command": "npm run dev"
+            "command": "npm run dev",
+            "smartStep": true,
+            "skipFiles": [
+                "<node_internals>/**",
+                "node_modules/**/*.js"
+            ]
         },
         {
             "type": "node-terminal",

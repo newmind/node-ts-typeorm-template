@@ -29,6 +29,8 @@ services:
       - pg
     depends_on:
       - pg
+      - proxy
+
   pg:
     image: bitnami/postgresql:11-debian-9
     container_name: pg
