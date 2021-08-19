@@ -8,7 +8,11 @@ export class UserEntity implements User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  // mysql 5.6 의  key max size 는 767 임
+  // varchar * utf8mb4 가 넘지 않도록 주의
+  // INNODB utf8 VARCHAR(255)
+  // INNODB utf8mb4 VARCHAR(191)
+  @Column({ length: 100 })
   @IsNotEmpty()
   email: string;
 

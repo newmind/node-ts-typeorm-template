@@ -8,9 +8,9 @@ const { host, user, password, database }: dbConfig = config.get('dbConfig');
 console.log('dbConnection.entities : ', path.join(__dirname, '../**/*.entity{.ts,.js}'));
 
 export const dbConnection: ConnectionOptions = {
-  type: 'postgres',
+  type: 'mysql',
   host: host,
-  port: 5432,
+  port: 3306,
   username: user,
   password: password,
   database: database,
