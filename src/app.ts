@@ -16,6 +16,7 @@ import { dbConnection } from '@databases';
 import { Routes } from '@interfaces/routes.interface';
 import errorMiddleware from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
+import apolloServer from '@/graphql2';
 
 class App {
   public app: express.Application;
@@ -52,6 +53,10 @@ class App {
   }
 
   private initializeMiddlewares() {
+    apolloServer.applyMiddleware({
+      app: this.app,
+      path: '/graphql',
+    });
     this.app.use(morgan(config.get('log.format'), { stream }));
     this.app.use(cors({ origin: config.get('cors.origin'), credentials: config.get('cors.credentials') }));
     this.app.use(hpp());
@@ -63,7 +68,7 @@ class App {
   }
 
   private initializeRoutes(routes: Routes[]) {
-    routes.forEach(route => {
+    routes.forEach((route) => {
       this.app.use('/', route.router);
     });
   }
