@@ -1,5 +1,5 @@
 import { ApolloServer } from 'apollo-server-express';
-import schema from '@/graphql2/schemasMap';
+import schema from '@graphql-api/schemasMap';
 
 const apolloServer = new ApolloServer({
   schema,

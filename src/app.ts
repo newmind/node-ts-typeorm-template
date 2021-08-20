@@ -16,7 +16,7 @@ import { dbConnection } from '@databases';
 import { Routes } from '@interfaces/routes.interface';
 import errorMiddleware from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
-import apolloServer from '@/graphql2';
+import apolloServer from '@/graphql-api';
 
 class App {
   public app: express.Application;
