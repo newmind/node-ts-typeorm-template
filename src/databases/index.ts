@@ -5,8 +5,6 @@ import { dbConfig } from '@interfaces/db.interface';
 
 const { host, user, password, database }: dbConfig = config.get('dbConfig');
 
-console.log('dbConnection.entities : ', path.join(__dirname, '../**/*.entity{.ts,.js}'));
-
 export const dbConnection: ConnectionOptions = {
   type: 'mysql',
   host: host,
