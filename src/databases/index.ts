@@ -13,7 +13,7 @@ export const dbConnection: ConnectionOptions = {
   password: process.env.DB_PASSWORD || password,
   database: database,
   synchronize: true,
-  logging: true,
+  logging: process.env.NODE_ENV !== 'production',
   entities: [path.join(__dirname, '../**/*.entity{.ts,.js}')],
   migrations: [path.join(__dirname, '../**/*.migration{.ts,.js}')],
   subscribers: [path.join(__dirname, '../**/*.subscriber{.ts,.js}')],
