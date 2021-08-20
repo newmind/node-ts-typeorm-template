@@ -32,7 +32,7 @@ services:
       - mysql
 
   mysql: # 서비스 명
-    image: mysql:5.6 # 사용할 이미지
+    image: mysql:5.7 # 사용할 이미지
     restart: always
     container_name: mysql # 컨테이너 이름 설정
     ports:
