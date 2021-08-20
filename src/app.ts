@@ -53,10 +53,6 @@ class App {
   }
 
   private initializeMiddlewares() {
-    apolloServer.applyMiddleware({
-      app: this.app,
-      path: '/graphql',
-    });
     this.app.use(morgan(config.get('log.format'), { stream }));
     this.app.use(cors({ origin: config.get('cors.origin'), credentials: config.get('cors.credentials') }));
     this.app.use(hpp());
@@ -65,6 +61,10 @@ class App {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cookieParser());
+    apolloServer.applyMiddleware({
+      app: this.app,
+      path: '/graphql',
+    });
   }
 
   private initializeRoutes(routes: Routes[]) {
