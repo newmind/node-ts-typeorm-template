@@ -1,2 +1,2 @@
 /dist
-src/graphql-api/generated.ts
+/src/graphql-api/generated.ts

@@ -16,7 +16,8 @@ import { dbConnection } from '@databases';
 import { Routes } from '@interfaces/routes.interface';
 import errorMiddleware from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
-import apolloServer from '@/graphql-api';
+import { ApolloServer, ApolloServerExpressConfig, ServerRegistration } from 'apollo-server-express';
+import schema from '@/graphql-api';
 
 class App {
   public app: express.Application;
@@ -30,6 +31,7 @@ class App {
 
     this.env !== 'test' && this.connectToDatabase();
     this.initializeMiddlewares();
+    this.initializeGraphQL();
     this.initializeRoutes(routes);
     this.initializeSwagger();
     this.initializeErrorHandling();
@@ -53,13 +55,6 @@ class App {
   }
 
   private initializeMiddlewares() {
-    apolloServer.start().then();
-
-    apolloServer.applyMiddleware({
-      app: this.app,
-      path: '/graphql',
-    });
-
     this.app.use(morgan(config.get('log.format'), { stream }));
     this.app.use(cors({ origin: config.get('cors.origin'), credentials: config.get('cors.credentials') }));
     this.app.use(hpp());
@@ -94,6 +89,26 @@ class App {
 
   private initializeErrorHandling() {
     this.app.use(errorMiddleware);
+  }
+
+  private initializeGraphQL() {
+    const apolloConfig: ApolloServerExpressConfig = {
+      schema,
+      formatError: (error) => {
+        logger.error(`[Graphql ERROR] ${error}`);
+        return error;
+      },
+    };
+
+    const apolloRegistration: ServerRegistration = {
+      app: this.app,
+      path: '/graphql',
+      cors: true,
+      bodyParserConfig: true,
+    };
+
+    const apollo = new ApolloServer(apolloConfig);
+    apollo.start().then(() => apollo.applyMiddleware(apolloRegistration));
   }
 }
 

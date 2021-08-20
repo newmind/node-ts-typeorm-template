@@ -1,15 +1,16 @@
-import { ApolloServer } from 'apollo-server-express';
-import schema from '@graphql-api/schemasMap';
+import 'graphql-import-node';
+import * as userTypeDefs from './schemas/user.graphql';
+import * as emptyTypeDefs from './schemas/empty.graphql';
+import { makeExecutableSchema } from '@graphql-tools/schema';
+import { GraphQLSchema } from 'graphql';
+import { IResolvers } from '@graphql-tools/utils';
+import { merge } from 'lodash';
+import { UserResolvers } from '@graphql-api/resolvers/UserResolver';
 
-const apolloServer = new ApolloServer({
-  schema,
-  debug: true,
+const resolverMap: IResolvers = merge(UserResolvers);
+
+const schema: GraphQLSchema = makeExecutableSchema({
+  typeDefs: [emptyTypeDefs, userTypeDefs],
+  resolvers: resolverMap,
 });
-
-//TODO: apollo server 3.0 > 에서는 필수, 그래도 작동 안함
-// console.log('apollo starting...');
-// (async () => {
-//   await apolloServer.start();
-// })().then();
-
-export default apolloServer;
+export default schema;

@@ -12,7 +12,7 @@ export const dbConnection: ConnectionOptions = {
   host: host,
   port: 3306,
   username: user,
-  password: password,
+  password: process.env.DB_PASSWORD || password,
   database: database,
   synchronize: true,
   logging: true,
