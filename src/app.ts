@@ -58,7 +58,7 @@ class App {
     this.app.use(morgan(config.get('log.format'), { stream }));
     this.app.use(cors({ origin: config.get('cors.origin'), credentials: config.get('cors.credentials') }));
     this.app.use(hpp());
-    this.app.use(helmet());
+    this.app.use(helmet({ contentSecurityPolicy: process.env.NODE_ENV === 'production' ? undefined : false }));
     this.app.use(compression());
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
@@ -98,6 +98,7 @@ class App {
         logger.error(`[Graphql ERROR] ${error}`);
         return error;
       },
+      debug: process.env.NODE_DEV === 'development',
     };
 
     const apolloRegistration: ServerRegistration = {
