@@ -6,8 +6,8 @@ graphql 스키마 정의 후 codegen
 
 
 ## 주요 패키지
-* apollo-server-express 2
-* express
+* apollo-server-express 3
+* express 4.17
 * typescript
 * typeORM
 * graphql-codegen/cli
