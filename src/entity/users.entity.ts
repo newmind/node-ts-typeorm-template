@@ -1,6 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
 import { Entity, PrimaryGeneratedColumn, Column, Unique, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { User } from '@interfaces/users.interface';
+import { User } from '@src/interfaces/users.interface';
 
 @Entity()
 @Unique(['email'])

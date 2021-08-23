@@ -2,12 +2,12 @@ import bcrypt from 'bcrypt';
 import config from 'config';
 import jwt from 'jsonwebtoken';
 import { getRepository } from 'typeorm';
-import { CreateUserDto } from '@dtos/users.dto';
-import { UserEntity } from '@entity/users.entity';
-import { HttpException } from '@exceptions/HttpException';
-import { DataStoredInToken, TokenData } from '@interfaces/auth.interface';
-import { User } from '@interfaces/users.interface';
-import { isEmpty } from '@utils/util';
+import { CreateUserDto } from '@src/dtos/users.dto';
+import { UserEntity } from '@src/entity/users.entity';
+import { HttpException } from '@src/exceptions/HttpException';
+import { DataStoredInToken, TokenData } from '@src/interfaces/auth.interface';
+import { User } from '@src/interfaces/users.interface';
+import { isEmpty } from '@src/utils/util';
 
 class AuthService {
   public users = UserEntity;

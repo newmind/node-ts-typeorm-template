@@ -1,10 +1,10 @@
 import bcrypt from 'bcrypt';
 import { getRepository } from 'typeorm';
-import { CreateUserDto } from '@dtos/users.dto';
-import { UserEntity } from '@entity/users.entity';
-import { HttpException } from '@exceptions/HttpException';
-import { User } from '@interfaces/users.interface';
-import { isEmpty } from '@utils/util';
+import { CreateUserDto } from '@src/dtos/users.dto';
+import { UserEntity } from '@src/entity/users.entity';
+import { HttpException } from '@src/exceptions/HttpException';
+import { User } from '@src/interfaces/users.interface';
+import { isEmpty } from '@src/utils/util';
 
 class UserService {
   public users = UserEntity;

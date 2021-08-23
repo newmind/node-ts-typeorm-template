@@ -1,7 +1,7 @@
 import config from 'config';
 import path from 'path';
 import { ConnectionOptions } from 'typeorm';
-import { dbConfig } from '@interfaces/db.interface';
+import { dbConfig } from '@src/interfaces/db.interface';
 
 const { host, user, password, database }: dbConfig = config.get('dbConfig');
 

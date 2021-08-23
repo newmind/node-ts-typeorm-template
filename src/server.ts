@@ -1,11 +1,11 @@
 process.env['NODE_CONFIG_DIR'] = __dirname + '/configs';
 
 import 'dotenv/config';
-import App from '@/app';
-import AuthRoute from '@routes/auth.route';
-import IndexRoute from '@routes/index.route';
-import UsersRoute from '@routes/users.route';
-import validateEnv from '@utils/validateEnv';
+import App from '@src/app';
+import AuthRoute from '@src/routes/auth.route';
+import IndexRoute from '@src/routes/index.route';
+import UsersRoute from '@src/routes/users.route';
+import validateEnv from '@src/utils/validateEnv';
 
 validateEnv();
 

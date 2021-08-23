@@ -5,7 +5,7 @@ import { makeExecutableSchema } from '@graphql-tools/schema';
 import { GraphQLSchema } from 'graphql';
 import { IResolvers } from '@graphql-tools/utils';
 import { merge } from 'lodash';
-import { UserResolvers } from '@graphql-api/resolvers/UserResolver';
+import { UserResolvers } from '@src/graphql-api/resolvers/UserResolver';
 
 const resolverMap: IResolvers = merge(UserResolvers);
 

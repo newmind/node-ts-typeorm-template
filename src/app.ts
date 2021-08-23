@@ -12,12 +12,12 @@ import compression from 'compression';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
 import { createConnection } from 'typeorm';
-import { dbConnection } from '@databases';
-import { Routes } from '@interfaces/routes.interface';
-import errorMiddleware from '@middlewares/error.middleware';
-import { logger, stream } from '@utils/logger';
+import { dbConnection } from '@src/databases';
+import { Routes } from '@src/interfaces/routes.interface';
+import errorMiddleware from '@src/middlewares/error.middleware';
+import { logger, stream } from '@src/utils/logger';
 import { ApolloServer, ApolloServerExpressConfig, ServerRegistration } from 'apollo-server-express';
-import schema from '@/graphql-api';
+import schema from '@src/graphql-api';
 
 class App {
   public app: express.Application;
