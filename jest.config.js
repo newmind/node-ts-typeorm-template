@@ -7,6 +7,7 @@ module.exports = {
   roots: ['<rootDir>/src'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.graphql$': 'graphql-import-node/jest', // graphql for jest
   },
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/src' }),
 };
